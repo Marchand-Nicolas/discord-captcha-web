@@ -31,3 +31,26 @@
     margin-left: 12px;
     color: rgb(30, 55, 48);
 }
+.goHomeIcon {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.goHomeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.goHomeContainer:hover .goHomeIcon {
+    color: rgb(0,161,232);
+}
+
+.goHomeContainer:hover {
+    background: linear-gradient(37deg, rgb(0,161,232) 0%, rgb(128,244,192) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

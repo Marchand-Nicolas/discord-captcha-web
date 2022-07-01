@@ -77,26 +77,24 @@ export default function Home() {
           <Link href="/docs">
             <div className={styles.card}>
               <h2>Documentation &rarr;</h2>
-              <p>Find in-depth information about Next.js features and API.</p>
+              <p>How to use the bot, more informations about how it works</p>
             </div>
           </Link>
-          <Link href="/docs">
-            <div className={styles.card}>
-              <h2> &rarr;</h2>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </div>
-          </Link>
+          <a className={styles.card}>
+            <h2>Support server &rarr;</h2>
+            <p>Any questions? A problem? A suggestion? Contact us ❤️</p>
+          </a>
           <Link href="/docs">
             <div className={styles.card}>
               <h2>Privacy &rarr;</h2>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
+              <p>How we use and store your data, and those of your community</p>
             </div>
           </Link>
           <Link href="/docs">
             <div className={styles.card}>
               <h2>TOS &rarr;</h2>
               <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
+                Terms of use of our service 
               </p>
             </div>
           </Link>
