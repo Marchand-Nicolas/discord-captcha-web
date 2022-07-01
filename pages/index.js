@@ -32,7 +32,7 @@ export default function Home() {
         <div className={styles.exampleContainer}>
         <img src="/assets/strip1.svg" className={[styles.strip, styles.v1].join(" ")} />
           <div className={styles.glassCard}>
-            <Image src="/illustrations/example1.png" alt="Captcha logo" layout='fill'  />
+            <Image src="/illustrations/example1.png" alt="Example" layout='fill'  />
           </div>
           <p>
             <code className={styles.code}>Say goodbye to robots</code>
@@ -47,7 +47,7 @@ export default function Home() {
         </div>
         <div className={[styles.exampleContainer, styles.reverse].join(" ")}>
           <div className={styles.glassCard}>
-            <Image src="/illustrations/example2.png" alt="Captcha logo" layout='fill'  />
+            <Image src="/illustrations/example2.png" alt="Slash command example" layout='fill'  />
           </div>
           <p>
             <code className={styles.code}>One command, 100% customizable</code>
@@ -57,22 +57,21 @@ export default function Home() {
           </p>
         </div>
         <div className={styles.exampleContainer}>
-          <div className={styles.glassCard}>
-            <Image src="/illustrations/example1.png" alt="Captcha logo" layout='fill'  />
+          <div className={[styles.glassCard, styles.v2].join(" ")}>
+            <Image src="/illustrations/server.svg" alt="Server illustration" layout='fill'  />
             <img src="/assets/shape1.svg" className={[styles.shape, styles.v1].join(" ")} />
           </div>
           <p>
-            <code className={styles.code}>Say goodbye to robots</code>
+            <code className={styles.code}>Secure and redundant</code>
             <br></br>
             <br></br>
-            Captcha bot automatically generates an image
-            containing text,
-            which is very difficult for a robot to understand.
-            It therefore prevents waves of automated
-            users destroying your server.
+            To reduce the risk of damage in case of hacking, the bot only asks you for the permissions it needs. Moreover, the bot is hosted on several servers simultaneously, so even if one of them has a problem, the rest of the infrastructure continues to work, thus protecting your server 24/7.
           </p>
         </div>
       </section>
+      <a className={styles.inviteBot} href="https://discord.com/api/oauth2/authorize?client_id=991022601574973501&permissions=268823632&scope=applications.commands%20bot" target="_blank">
+        Invite the bot
+      </a>
       <section id="informations" className={styles.main}>
         <div className={styles.grid}>
           <Link href="/docs">

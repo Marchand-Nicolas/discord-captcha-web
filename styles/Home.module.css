@@ -149,13 +149,13 @@
 }
 
 .exampleContainer.reverse .glassCard {
-  transform: rotateX(-20deg) rotateY(10deg) rotateZ(2deg);
+  transform: rotateX(-20deg) rotateY(10deg) rotateZ(-2deg);
 }
 
 .glassCard img {
   padding: 15px !important;
   border-radius: 1.4em;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .exampleContainer.reverse .glassCard:hover, .glassCard:hover {
@@ -171,6 +171,11 @@
   }
 }
 
+.glassCard.v2 {
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0 );
+  transform: rotate3d(0, 0, 0, 0) !important;
+}
+
 .strip {
   position: absolute;
   z-index: -1;
@@ -181,4 +186,14 @@
   position: absolute;
   z-index: -1;
   width: 500px;
+}
+
+.inviteBot {
+  background: linear-gradient(37deg, rgb(0,161,232) 0%, rgb(128,244,192) 100%);
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 3em;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
 }
