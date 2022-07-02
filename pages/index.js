@@ -80,7 +80,7 @@ export default function Home() {
               <p>How to use the bot, more informations about how it works</p>
             </div>
           </Link>
-          <a className={styles.card}>
+          <a href="https://discord.gg/Edb5UUsnTy" className={styles.card}>
             <h2>Support server &rarr;</h2>
             <p>Any questions? A problem? A suggestion? Contact us ❤️</p>
           </a>
