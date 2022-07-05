@@ -14,7 +14,7 @@ export default function Home() {
             get rid of <strong>bot attack</strong>
           </h1>
           <p className={styles.description}>
-              in <code className={styles.code}>only one slash command</code>
+              in <strong className={[styles.strong, styles.v2].join(" ")}>only one slash command</strong>
           </p>
           <a href='#description'>
             <svg className={styles.bottomArrow} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -35,7 +35,7 @@ export default function Home() {
             <Image src="/illustrations/example1.png" alt="Example" layout='fill'  />
           </div>
           <p>
-            <code className={styles.code}>Say goodbye to robots</code>
+            <strong className={styles.strong}>Say goodbye to robots</strong>
             <br></br>
             <br></br>
             Captcha bot automatically generates an image
@@ -50,7 +50,7 @@ export default function Home() {
             <Image src="/illustrations/example2.png" alt="Slash command example" layout='fill'  />
           </div>
           <p>
-            <code className={styles.code}>One command, 100% customizable</code>
+            <strong className={styles.strong}>One command, 100% customizable</strong>
             <br></br>
             <br></br>
             In a single command, change the avatar and name of the bot, as well as the title and description of the embed.
@@ -62,18 +62,33 @@ export default function Home() {
             <img src="/assets/shape1.svg" className={[styles.shape, styles.v1].join(" ")} />
           </div>
           <p>
-            <code className={styles.code}>Secure and redundant</code>
+            <strong className={styles.strong}>Secure and redundant</strong>
             <br></br>
             <br></br>
             To reduce the risk of damage in case of hacking, the bot only asks you for the permissions it needs. Moreover, the bot is hosted on several servers simultaneously, so even if one of them has a problem, the rest of the infrastructure continues to work, thus protecting your server 24/7.
           </p>
         </div>
       </section>
+      {
+      /*
       <a className={styles.inviteBot} href="https://discord.com/api/oauth2/authorize?client_id=991022601574973501&permissions=268823632&scope=applications.commands%20bot" target="_blank">
         Invite the bot
       </a>
+      */
+      }
+      <Link href="dashboard">
+        <p className={[styles.inviteBot, "button"].join(" ")}>Dashboard</p>
+      </Link>
       <section id="informations" className={styles.main}>
         <div className={styles.grid}>
+        <Link href="/dashboard">
+            <div className={styles.card}>
+              <h2>Dashboard &rarr;</h2>
+              <p>
+                Setup the bot
+              </p>
+            </div>
+          </Link>
           <Link href="/docs">
             <div className={styles.card}>
               <h2>Documentation &rarr;</h2>
@@ -86,16 +101,8 @@ export default function Home() {
           </a>
           <Link href="/docs">
             <div className={styles.card}>
-              <h2>Privacy &rarr;</h2>
+              <h2>Privacy and TOS &rarr;</h2>
               <p>How we use and store your data, and those of your community</p>
-            </div>
-          </Link>
-          <Link href="/docs">
-            <div className={styles.card}>
-              <h2>TOS &rarr;</h2>
-              <p>
-                Terms of use of our service 
-              </p>
             </div>
           </Link>
         </div>

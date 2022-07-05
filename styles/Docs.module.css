@@ -35,7 +35,7 @@
 }
 
 .section {
-    padding: 0 0 0 20px;
+    padding: 0 0 0 35px;
     position: relative;
 }
 
@@ -43,10 +43,10 @@
     content: "";
     position: absolute;
     top: 0;
-    left: 0;
+    left: 12px;
     height: 100%;
     width: 4px;
-    background: rgb(188, 188, 188);
+    background: rgb(219, 219, 219);
 }
 
 .imageContainer {

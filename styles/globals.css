@@ -25,6 +25,14 @@ a {
   text-decoration: none;
 }
 
+a * {
+  cursor: pointer;
+}
+
+.button {
+  cursor: pointer;
+}
+
 * {
   scrollbar-width: auto;
   scrollbar-color: #24a0ff #ffffff;
@@ -39,8 +47,6 @@ a {
 *::-webkit-scrollbar-thumb {
   background: rgb(0,161,232);
   background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgb(0,161,232) min(calc(100% - var(--scroll_percent) * 100%), 30%), rgb(128,244,192) max(calc(100% - var(--scroll_percent) * 100%), 70%), rgba(255, 255, 255, 0) 100%);
-  transition: 0.5s;
-  position: relative;
 }
 
 *::selection {
@@ -141,14 +147,6 @@ a {
     border-color: #0fa763 !important;
     border-width: 2px !important;
     border-style: solid;
-}
-code{
-    padding: 2px 2px;
-    color: #fff;
-    background-color: #292828;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
 }
 .box{
     background: #2C2F33;
