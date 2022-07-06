@@ -18,16 +18,16 @@ export default function Home() {
                     <ul>
                         <li>modify or copy the materials;</li>
                         <li>use the materials for any commercial purpose or for any public display;</li>
-                        <li>attempt to reverse engineer any software contained on Heyko's Website;</li>
+                        <li>attempt to reverse engineer any software contained on our ebsite;</li>
                         <li>remove any copyright or other proprietary notations from the materials; or</li>
-                        <li>transferring the materials to another person or "mirror" the materials on any other server.</li>
+                        <li>transferring the materials to another person or &quot;mirror&quot; the materials on any other server.</li>
                     </ul>
                     
                     <p>This will let us to terminate upon violations of any of these restrictions. Upon termination, your viewing right will also be terminated and you should destroy any downloaded materials in your possession whether it is printed or electronic format. These Terms of Service has been created with the help of the <a href="https://www.termsofservicegenerator.net">Terms Of Service Generator</a>.</p>
                 </section>
                 <section className={styles.section}>
                     <h2>3. Disclaimer</h2>
-                    <p>All the materials on this website are provided "as is". We makes no warranties, may it be expressed or implied, therefore negates all other warranties. Furthermore, We do not make any representations concerning the accuracy or reliability of the use of the materials on our Website or otherwise relating to such materials or any sites linked to this Website.</p>
+                    <p>All the materials on this website are provided &quot;is&quot;. We makes no warranties, may it be expressed or implied, therefore negates all other warranties. Furthermore, We do not make any representations concerning the accuracy or reliability of the use of the materials on our Website or otherwise relating to such materials or any sites linked to this Website.</p>
                 </section>
                 <section className={styles.section}>
                     <h2>4. Limitations</h2>
@@ -39,7 +39,7 @@ export default function Home() {
                 </section>
                 <section className={styles.section}>
                     <h2>6. Links</h2>
-                    <p>We have not reviewed all of the sites linked to the Website and we are not responsible for the contents of any such linked site. The presence of any link does not imply endorsement by our team of the site. The use of any linked website is at the user’s own risk.</p>
+                    <p>We have not reviewed all of the sites linked to the Website and we are not responsible for the contents of any such linked site. The presence of any link does not imply endorsement by our team of the site. The use of any linked website is at the user&apos;s own risk.</p>
                 </section>
                 <section className={styles.section}>
                     <h2>7. Site Terms of Use Modifications</h2>
