@@ -37,7 +37,7 @@ function Button(props) {
                 purchase_units: [
                 {
                     amount: {
-                    value: "10.00"
+                        value: "10.00"
                     }
                 }
                 ]
@@ -56,7 +56,6 @@ function Button(props) {
             render(<Loading />, document.getElementById('popup'))
             const orderId = data.orderID
             try {
-                console.log(props)
                 const datas = await (await fetch(`${serverIp}buy`, { method: 'POST', body : `{ "email": "${props.email}", "guildId": "${props.guildId}", "orderId": "${orderId}", "discordUserId": "${props.discordUserId}" }` })).json()
                 if (!datas.result) return requestError()
                 popup("Success", `Payment completed, order ID : ${orderId}`, "success", {
@@ -90,7 +89,7 @@ function Button(props) {
 
 export default function PaypalButton(props) {
     return <div className={styles.container}>
-        <PayPalScriptProvider options={{ "client-id": "AZ3TazDwK81igZjiDlESBedF7prgAcUPbtlZwRblh7oW9zX5Wy0k1gtn1wicE3jyN6d5cN2N6nnOTs2R" }}>
+        <PayPalScriptProvider options={{ "client-id": "Ac6OFg81Jg4IEKwydCGpz9xMKfM4XmQACkeKgjE1uwp0VAGjR44FJy-RYH8PAZOVi0d2qJ-ArDkmFBCx" }}>
         <Button setPaymentProgress={props.setPaymentProgress} email={props.email} guildId={props.guildId} discordUserId={props.discordUserId} />
     </PayPalScriptProvider>
     </div>
