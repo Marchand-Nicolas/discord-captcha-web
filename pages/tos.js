@@ -8,7 +8,7 @@ export default function Home() {
         <>
         <Header />
             <div className={styles.page}>
-                <h1>TOS of the the Discord bot and its website</h1>
+                <h1>TOS and Privacy of the Discord bot (and its website)</h1>
                 <section className={styles.section}>
                     <h2>1. Terms</h2>
                     <p>By accessing this website, you are agreeing to be bound by these Website Terms and Conditions of Use and agree that you are responsible for the agreement with any applicable local laws. If you disagree with any of these terms, you are prohibited from accessing this site.</p>
