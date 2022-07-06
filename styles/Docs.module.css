@@ -55,3 +55,7 @@
     aspect-ratio: 795/601;
     max-width: 600px;
 }
+
+.strong {
+    color: rgb(0,161,232);
+}

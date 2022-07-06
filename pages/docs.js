@@ -21,7 +21,14 @@ export default function Home() {
                     <ul>
                         <li>To open this menu, after inviting the bot, you just have to write &quot;/&quot; in the chat bar.</li>
                         <li>Then select the Captcha command.</li>
-                        <li>Finally, you just have to fill in the following fields:</li>
+                        <li>
+                            Finally, you just have to fill in the following fields:
+                            <ul>
+                                <li><strong className={styles.strong}>Channel</strong> - The channel that will contain the captcha</li>
+                                <li><strong className={styles.strong}>Role</strong> - The role given to people who complete the captcha</li>
+                            </ul>
+                            The other fields are not required
+                        </li>
                     </ul>
                 </section>
             </div>
