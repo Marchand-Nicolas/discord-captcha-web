@@ -91,6 +91,15 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 600px) {
+  .card {
+    border-radius: 0;
+    width: 100%;
+    margin: 1rem 0;
+    height: auto;
+  }
+}
+
 .card:hover,
 .card:focus,
 .card:active {

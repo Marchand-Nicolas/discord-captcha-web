@@ -32,6 +32,18 @@
     background: rgba( 0, 0, 0, 0.45 );
 }
 
+@media screen and (max-width: 550px) {
+    .page {
+        margin: 0 0 0 100px;
+        position: absolute;
+        padding: 0 20px;
+        width: calc(100% - 140px);
+        border-radius: 0;
+        border: none;
+        min-height: 100%;
+    }
+}
+
 .title {
     font-weight: bold;
     width: fit-content;
