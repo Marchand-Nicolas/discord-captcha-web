@@ -193,13 +193,3 @@
   width: 500px;
   max-width: 100%;
 }
-
-.inviteBot {
-  background: linear-gradient(37deg, rgb(0,161,232) 0%, rgb(128,244,192) 100%);
-  color: white;
-  padding: 0.5rem 2rem;
-  border-radius: 3em;
-  display: block;
-  width: fit-content;
-  margin: 0 auto;
-}

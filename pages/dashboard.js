@@ -1,15 +1,19 @@
 import styles from '../styles/Dashboard.module.css'
-import Footer from '../components/Footer'
 import config from '../utils/config'
 import { useState, useEffect } from 'react'
 import { getCookie, setCookie } from '../utils/cookies'
 import Link from 'next/link'
 import PaypalButton from "../components/PaypalButton" 
+import { render } from 'react-dom'
+import popup from '../utils/popup'
+import fire from '../public/icons/fire.svg'
 
 export default function Dashboard() {
     const serverIp = config.serverIp
     const [user, setUser] = useState(undefined)
     const [guilds, setGuilds] = useState([])
+    const [guildStatus, setGuildStatus] = useState(0)
+    const [paymentProgress, setPaymentProgress] = useState(0)
     useEffect(() => {
         let token = getCookie('token')
         if (!token || token === 'undefined') {
@@ -27,7 +31,7 @@ export default function Dashboard() {
                 })
             }
             else {
-                window.location.href = `https://discord.com/api/oauth2/authorize?client_id=991022601574973501&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=identify%20guilds`
+                window.location.href = `https://discord.com/api/oauth2/authorize?client_id=991022601574973501&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fdashboard&response_type=code&scope=identify%20email%20guilds`
             }
         }
         else {
@@ -65,7 +69,7 @@ export default function Dashboard() {
     }
     function endImgLoading(guildId) {
         const guildElement = document.getElementById("guild_" + guildId)
-        guildElement.classList.remove(styles.loading)
+        guildElement.classList.remove("loading")
     }
 
     const currentGuildId = typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get("guild") : ""
@@ -89,7 +93,33 @@ export default function Dashboard() {
             "permissions_new": "4398046511103"
         }
     }
-    
+
+    useEffect(() => {
+        if (!guild) return;
+        if (!guild.id) return;
+        try {
+            fetch(`${serverIp}status`, { method: 'POST', body : `{ "guildId": "${guild.id}" }` }).then(res => res.json()).then(res => {
+                if (res.result) {
+                    setGuildStatus(res.status)
+                }
+                else {
+                    requestError()
+                }
+            })
+        } catch (error) {
+            requestError()
+        }
+        function requestError() {
+            setGuildStatus(0)
+            popup("Error", `An error occurred.`, "error", {
+                content: <p className='content'>
+                    It seems that part of our infrastructure is not operational. Please come back later, otherwise some features will not work.
+                </p>,
+                icon: fire
+            })
+        }
+    }, [guild, paymentProgress]);
+
     return <>
         <div style={{backgroundImage: guild.icon ? `url('https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.webp?size=96')` : null}} className={styles.background} />
         <nav className={styles.navbar}>
@@ -97,7 +127,7 @@ export default function Dashboard() {
                 guilds.length > 0 ? guilds.map(g =>
                     checkAdminPerms(g) ?
                     <Link key={"nav_guild_" + g.id} href={"?guild=" + g.id}>
-                        <div id={"guild_" + g.id} className={[styles.navGuild, !document.getElementById("guild_" + g.id) && styles.loading, guild.id === g.id ? styles.selected : null].join(" ")}>
+                        <div id={"guild_" + g.id} className={[styles.navGuild, !document.getElementById("guild_" + g.id) && "loading", guild.id === g.id ? styles.selected : null].join(" ")}>
                             <img className={styles.guildIcon} onLoad={() => endImgLoading(g.id)} onError={() => imgError(g.id)} src={`https://cdn.discordapp.com/icons/${g.id}/${g.icon}.webp?size=96`} alt={g.name + " (guild icon)"} />
                         </div>
                     </Link> : null
@@ -108,14 +138,44 @@ export default function Dashboard() {
         </nav>
         <div className={styles.page}>
             <h1 className={styles.title}>{guild.name}</h1>
-            <button className={styles.buyButton}>
-                Add bot <strong>10$</strong>
-            </button>
+            <a href='/docs' target="_blank" rel="noreferrer">
+                <button className={styles.button}>
+                    Documentation <strong><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                    <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                    </svg></strong>
+                </button>
+            </a>
+            <a href='https://discord.gg/Edb5UUsnTy' target="_blank" rel="noreferrer">
+                <button className={styles.button}>
+                    Support <strong><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    </strong>
+                </button>
+            </a>
+            
             {
-                /*
-<PaypalButton />
-                */
+                guildStatus ? 
+                <>
+                    <button className={[styles.button, styles.buyButton, styles.done].join(" ")}>
+                        Purchased <strong>10$</strong>
+                    </button>
+                    <a href="https://discord.com/api/oauth2/authorize?client_id=991022601574973501&permissions=268823632&scope=applications.commands%20bot" target="_blank" rel="noreferrer">
+                        <button className={"button round " + styles.inviteBot}>
+                            Invite bot
+                        </button>
+                    </a>
+                </> :
+                <button onClick={() => render(<PaypalButton setPaymentProgress={setPaymentProgress} email={user.email} guildId={guild.id} discordUserId={user.id} />, document.getElementById("container"))} className={[styles.button, styles.buyButton].join(" ")}>
+                    Add bot <strong>10$</strong>
+                </button>
             }
+            <div id="container" key={guild.id + "_" + paymentProgress}>
+
+            </div>
+            <br></br>
         </div>
     </>
 }

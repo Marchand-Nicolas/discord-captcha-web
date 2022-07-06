@@ -4,7 +4,15 @@ import {
     usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
 
-function Button() {
+import styles from '../styles/Payments.module.css'
+import popup from '../utils/popup'
+import drop from '../public/icons/drop.svg'
+import Loading from '../components/Loading'
+import { render } from 'react-dom'
+import config from '../utils/config'
+
+function Button(props) {
+    const serverIp = config.serverIp
     /**
      * usePayPalScriptReducer use within PayPalScriptProvider
      * isPending: not finished loading(default state)
@@ -13,19 +21,29 @@ function Button() {
      */
     const [{ isPending }] = usePayPalScriptReducer();
     const paypalbuttonTransactionProps = {
-        style: { layout: "vertical" },
-        createOrder(data, actions) {
-        return actions.order.create({
-            purchase_units: [
-            {
-                amount: {
-                value: "0.01"
-                }
+        style: {
+            layout: 'vertical',
+            color:  'blue',
+            shape:  'rect',
+            label:  'paypal',
+            // Set text color to white
+            fundingicons: {
+                color: 'white'
             }
-            ]
-        });
+
         },
-        onApprove(data, actions) {
+        createOrder(data, actions) {
+            return actions.order.create({
+                purchase_units: [
+                {
+                    amount: {
+                    value: "10.00"
+                    }
+                }
+                ]
+            });
+        },
+        async onApprove(data, actions) {
         /**
          * data: {
          *   orderID: string;
@@ -35,14 +53,31 @@ function Button() {
          *   facilitatorAccesstoken: string;
          * }
          */
-        return actions.order.capture({}).then((details) => {
-            alert(
-            "Transaction completed by" +
-                (details?.payer.name.given_name ?? "No details")
-            );
-
-            alert("Data details: " + JSON.stringify(data, null, 2));
-        });
+            render(<Loading />, document.getElementById('popup'))
+            const orderId = data.orderID
+            try {
+                console.log(props)
+                const datas = await (await fetch(`${serverIp}buy`, { method: 'POST', body : `{ "email": "${props.email}", "guildId": "${props.guildId}", "orderId": "${orderId}", "discordUserId": "${props.discordUserId}" }` })).json()
+                if (!datas.result) return requestError()
+                popup("Success", `Payment completed, order ID : ${orderId}`, "success", {
+                    content: <p className='content'>
+                        In case of problems, keep the order ID and contact our support.
+                    </p>,
+                    icon: drop
+                })
+                props.setPaymentProgress(Math.random())
+            } catch (error) {
+                console.log(error)
+                requestError()
+            }
+            function requestError() {
+                popup("Error", `An error occurred. Order ID : ${orderId}`, "error", {
+                    content: <p className='content'>
+                        It seems that the payment has not been completed by our infrastructure. Please contact the support.
+                    </p>,
+                    icon: drop
+                })
+            }
         }
     };
     return (
@@ -53,8 +88,10 @@ function Button() {
     );
 }
 
-export default function PaypalButton() {
-    return <PayPalScriptProvider options={{ "client-id": "AZ3TazDwK81igZjiDlESBedF7prgAcUPbtlZwRblh7oW9zX5Wy0k1gtn1wicE3jyN6d5cN2N6nnOTs2R" }}>
-        <Button />
+export default function PaypalButton(props) {
+    return <div className={styles.container}>
+        <PayPalScriptProvider options={{ "client-id": "AZ3TazDwK81igZjiDlESBedF7prgAcUPbtlZwRblh7oW9zX5Wy0k1gtn1wicE3jyN6d5cN2N6nnOTs2R" }}>
+        <Button setPaymentProgress={props.setPaymentProgress} email={props.email} guildId={props.guildId} discordUserId={props.discordUserId} />
     </PayPalScriptProvider>
+    </div>
 }

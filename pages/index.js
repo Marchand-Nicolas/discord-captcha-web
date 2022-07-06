@@ -77,7 +77,7 @@ export default function Home() {
       */
       }
       <Link href="dashboard">
-        <p className={[styles.inviteBot, "button"].join(" ")}>Dashboard</p>
+        <p className="button round center">Dashboard</p>
       </Link>
       <section id="informations" className={styles.main}>
         <div className={styles.grid}>
