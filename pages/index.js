@@ -99,7 +99,7 @@ export default function Home() {
             <h2>Support server &rarr;</h2>
             <p>Any questions? A problem? A suggestion? Contact us ❤️</p>
           </a>
-          <Link href="/docs">
+          <Link href="/tos">
             <div className={styles.card}>
               <h2>Privacy and TOS &rarr;</h2>
               <p>How we use and store your data, and those of your community</p>
