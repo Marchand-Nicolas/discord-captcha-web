@@ -1,3 +1,4 @@
 {
-    "serverIp": "https://captcha-api.heyko.org/"
+  "serverIp": "https://captcha-api.heyko.org/",
+  "invite": "https://discord.com/api/oauth2/authorize?client_id=991022601574973501&permissions=268823632&scope=applications.commands%20bot"
 }
