@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Image from "next/image";
 import Link from "next/link";
-import { invite } from "../utils/config.json";
+import config from "../utils/config.json";
 
 export default function Home() {
   return (
@@ -106,7 +106,7 @@ export default function Home() {
           </p>
         </div>
       </section>
-      <a href={invite} target="_blank" rel="noreferrer">
+      <a href={config.invite} target="_blank" rel="noreferrer">
         <p className="button round center">Add the bot</p>
       </a>
       <section id="informations" className={styles.main}>

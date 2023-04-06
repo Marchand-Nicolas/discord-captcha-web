@@ -7,7 +7,6 @@ import PaypalButton from "../components/PaypalButton";
 import { render } from "react-dom";
 import popup from "../utils/popup";
 import fire from "../public/icons/fire.svg";
-import { invite } from "../utils/config.json";
 
 export default function Dashboard() {
   const serverIp = config.serverIp;
@@ -256,7 +255,7 @@ export default function Dashboard() {
                         </button>
                     </a>
                 </>*/
-          <a href={invite} target="_blank" rel="noreferrer">
+          <a href={config.invite} target="_blank" rel="noreferrer">
             <button className={"button round " + styles.inviteBot}>
               Invite bot
             </button>
